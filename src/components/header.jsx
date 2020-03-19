@@ -1,6 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
 
+import { FaBeer, FaTwitter, FaTwitch, FaGithub, FaGitlab } from 'react-icons/fa';
+
 class Header extends React.Component {
     constructor(props) {
         super(props);
@@ -23,21 +25,36 @@ class Header extends React.Component {
                             <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>
                         </button>
                     </div>
-                    <div class={`w-full block flex-grow lg:flex lg:items-center lg:w-auto ${this.state.open ? "":"hidden"}`} >
-                        <div class="text-md lg:flex-grow">
+                    <div class={`w-full block flex-grow lg:flex lg:items-center lg:w-auto ${this.state.open ? "" : "hidden"}`} >
+                        <div class="text-md lg:flex-grow flex">
                             <Link className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" activeClassName="text-white" to="/">Home</Link>
                             <Link className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" activeClassName="text-white" to="/blog">Blog</Link>
                             <Link className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" activeClassName="text-white" to="/about">About</Link>
                             <a className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" href="https://cloud.alexx.ml/s/cmkGzPCqf592R6j" target="__blank">Shared</a>
                             <a className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" href="https://cloud.alexx.ml/s/pw6e9KqtS5L7fRp" target="__blank">Tools</a>
                         </div>
+                        <div class="text-md lg:flex-shrink flex">
+                            <a className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+                                href="https://twitter.com/FrosteeAlex" target="__blank">
+                                <FaTwitter size={24}/>
+                            </a>
+                            <a className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+                                href="https://gitlab.com/FrozenAlex" target="__blank">
+                                <FaGitlab size={24}/>
+                            </a>
+                            <a className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+                                href="https://github.com/FrozenAlex" target="__blank">
+                                <FaGithub size={24}/>
+                            </a>
+                        </div>
                     </div>
+
                 </nav>
             </header>
         )
     }
-    toggleNavBar(){
-        this.setState({open:!this.state.open});
+    toggleNavBar() {
+        this.setState({ open: !this.state.open });
     }
 }
 export default Header
