@@ -1,11 +1,9 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-
 import Layout from "../layouts/layout.jsx"
 import SEO from "../components/seo"
 import Img from "gatsby-image"
-
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
@@ -21,9 +19,12 @@ const BlogIndex = ({ data, location }) => {
           {posts.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug
             return (
-              <Link to={node.fields.slug} >
+              <Link to={node.fields.slug}>
                 <article key={node.fields.slug} class="rounded overflow-hidden shadow-lg">
-                  <Img className="h-64 w-full object-cover" fluid={node.frontmatter.featuredImage.childImageSharp.fluid} />
+                  <Img
+                    className="h-64 w-full object-cover"
+                    fluid={node.frontmatter.featuredImage.childImageSharp.fluid}
+                  />
                   <div class="px-6 py-4">
                     <header>
                       <h3 className="font-bold text-xl mb-2">
@@ -31,24 +32,25 @@ const BlogIndex = ({ data, location }) => {
                           {title}
                         </Link>
                       </h3>
-                      <small className="text-gray-700 text-base text-sm">{node.frontmatter.date}</small>
+                      <small className="text-gray-700 text-base text-sm">
+                        {node.frontmatter.date}
+                      </small>
                     </header>
                     <section>
-                      <p className="text-gray-700 text-base"
+                      <p
+                        className="text-gray-700 text-base"
                         dangerouslySetInnerHTML={{
                           __html: node.frontmatter.description || node.excerpt,
                         }}
                       />
                     </section>
                   </div>
-
                 </article>
               </Link>
             )
           })}
         </div>
       </div>
-
     </Layout>
   )
 }
@@ -74,11 +76,11 @@ export const pageQuery = graphql`
             title
             description
             featuredImage {
-                childImageSharp {
-                  fluid(maxWidth: 800) {
-                    ...GatsbyImageSharpFluid
-                  }
+              childImageSharp {
+                fluid(maxWidth: 800) {
+                  ...GatsbyImageSharpFluid
                 }
+              }
             }
           }
         }

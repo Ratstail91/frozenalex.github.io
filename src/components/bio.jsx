@@ -9,7 +9,6 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 
-
 const Bio = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
@@ -39,9 +38,8 @@ const Bio = () => {
     <div
       className="flex m-3"
       style={{
-        display: `flex`
+        display: `flex`,
       }}
-      
     >
       <Image
         fixed={data.avatar.childImageSharp.fixed}

@@ -8,9 +8,9 @@ const About = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout shrink={true} location={location} title={siteTitle}>
       <h1 className="m-5 text-5xl text-center">About page</h1>
-      <SEO title="All posts" />
+      <SEO title="About" />
     </Layout>
   )
 }

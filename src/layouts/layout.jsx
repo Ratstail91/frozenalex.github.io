@@ -3,12 +3,12 @@ import React from "react"
 import Header from "../components/header"
 
 const Layout = ({ shrink, location, title, children }) => {
-
-
   return (
-    <div className="app" >
+    <div className="app">
       <Header></Header>
-      <main className={`${shrink?"container mx-auto px-4 sm:px-1":""}`}>{children}</main>
+      <main className={`${shrink ? "container mx-auto px-4 sm:px-1 " : ""}`}>
+        {children}
+      </main>
       {/* <footer>
         © {new Date().getFullYear()}, FrozenAlex, Built with
         {` `}
@@ -19,4 +19,3 @@ const Layout = ({ shrink, location, title, children }) => {
 }
 
 export default Layout
-

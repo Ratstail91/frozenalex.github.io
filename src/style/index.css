@@ -5,46 +5,50 @@
 
 @tailwind utilities;
 
-
 /* Base font size */
-html, body {
-    font-size: 16px;
+html,
+body {
+  font-size: 16px;
 }
 
 /* Navbar component */
 .header {
-    background-color: #38b2ac;
+  background-color: #38b2ac;
 }
 
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 1rem;
 }
 
 /* Typography */
 .content h1 {
-    font-size: 2.5em;
+  font-size: 2.5em;
 }
 
 .content h2 {
-    font-size: 2.25em;
+  font-size: 2.25em;
 }
 
 .content h3 {
-    font-size: 2.0em;
+  font-size: 2em;
 }
 
 .content h4 {
-    font-size: 1.75em;
+  font-size: 1.75em;
 }
 
 .content p {
-    line-height: 1.6rem;
+  line-height: 1.6rem;
 }
 
 .content ol {
-    list-style-type: decimal;
+  list-style-type: decimal;
+}
+
+.navbar a.active {
+  color: white !important;
 }

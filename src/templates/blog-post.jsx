@@ -19,14 +19,9 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         description={post.frontmatter.description || post.excerpt}
       />
       <article className="container-small mx-auto max-w-lg">
-      
         <header className="text-center">
-          <h1 className="m-6 text-4xl">
-            {post.frontmatter.title}
-          </h1>
-          <p className="m-6 text-xl">
-            {post.frontmatter.date}
-          </p>
+          <h1 className="m-6 text-4xl">{post.frontmatter.title}</h1>
+          <p className="m-6 text-xl">{post.frontmatter.date}</p>
         </header>
         <section className="content" dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr />
