@@ -5,8 +5,10 @@
 
 @tailwind utilities;
 
-.body {
-    
+
+/* Base font size */
+html, body {
+    font-size: 16px;
 }
 
 /* Navbar component */
@@ -20,4 +22,29 @@
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 1rem;
+}
+
+/* Typography */
+.content h1 {
+    font-size: 2.5em;
+}
+
+.content h2 {
+    font-size: 2.25em;
+}
+
+.content h3 {
+    font-size: 2.0em;
+}
+
+.content h4 {
+    font-size: 1.75em;
+}
+
+.content p {
+    line-height: 1.6rem;
+}
+
+.content ol {
+    list-style-type: decimal;
 }

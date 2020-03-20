@@ -8,54 +8,49 @@ import Img from "gatsby-image"
 
 
 const BlogIndex = ({ data, location }) => {
-    const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMarkdownRemark.edges
+  const siteTitle = data.site.siteMetadata.title
+  const posts = data.allMarkdownRemark.edges
 
-    return (
-        <Layout shrink={true} location={location} title={siteTitle}>
-            <div className="container mx-auto px-4">
-                <h1 className="text-4xl pt-5 text-center pb-6">Blog</h1>
-                <SEO title="All posts" />
-                {/* <Bio /> */}
-                <div className="flex flex-row flex-wrap justify-between content-center">
-                    {posts.map(({ node }) => {
-                        const title = node.frontmatter.title || node.fields.slug
-                        return (
-                            <Link className="shadow-none m-4 sm:m-2 border-none no-underline flex-grow lg:max-w-sm" to={node.fields.slug} >
-                                <article key={node.fields.slug} class=" rounded overflow-hidden shadow-lg">
-                                    <Img className="w-full" fluid={node.frontmatter.featuredImage.childImageSharp.fluid} />
-                                    <div class="px-6 py-4">
-                                        <header>
-                                            <h3 className="font-bold text-xl mb-2">
-                                                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                                                    {title}
-                                                </Link>
-                                            </h3>
-                                            <small className="text-gray-700 text-base text-sm">{node.frontmatter.date}</small>
-                                        </header>
-                                        <section>
-                                            <p className="text-gray-700 text-base"
-                                                dangerouslySetInnerHTML={{
-                                                    __html: node.frontmatter.description || node.excerpt,
-                                                }}
-                                            />
-                                        </section>
-                                        {/* <div class="px-6 py-4">
-                                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#photography</span>
-                                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#travel</span>
-                                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#winter</span>
-                                </div> */}
-                                    </div>
+  return (
+    <Layout shrink={true} location={location} title={siteTitle}>
+      <div className="mx-auto px-4">
+        <h1 className="text-4xl pt-5 text-center pb-6">Blog</h1>
+        <SEO title="Blog" />
+        {/* <Bio /> */}
+        <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-3 content-center w-full">
+          {posts.map(({ node }) => {
+            const title = node.frontmatter.title || node.fields.slug
+            return (
+              <Link to={node.fields.slug} >
+                <article key={node.fields.slug} class="rounded overflow-hidden shadow-lg">
+                  <Img className="h-64 w-full object-cover" fluid={node.frontmatter.featuredImage.childImageSharp.fluid} />
+                  <div class="px-6 py-4">
+                    <header>
+                      <h3 className="font-bold text-xl mb-2">
+                        <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+                          {title}
+                        </Link>
+                      </h3>
+                      <small className="text-gray-700 text-base text-sm">{node.frontmatter.date}</small>
+                    </header>
+                    <section>
+                      <p className="text-gray-700 text-base"
+                        dangerouslySetInnerHTML={{
+                          __html: node.frontmatter.description || node.excerpt,
+                        }}
+                      />
+                    </section>
+                  </div>
 
-                                </article>
-                            </Link>
-                        )
-                    })}
-                </div>
-            </div>
+                </article>
+              </Link>
+            )
+          })}
+        </div>
+      </div>
 
-        </Layout>
-    )
+    </Layout>
+  )
 }
 
 export default BlogIndex

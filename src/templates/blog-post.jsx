@@ -4,6 +4,7 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../layouts/layout"
 import SEO from "../components/seo"
+import Img from "gatsby-image"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
@@ -11,12 +12,14 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const { previous, next } = pageContext
 
   return (
-    <Layout shrink={true} location={location} title={siteTitle}>
+    <Layout shrink={false} location={location} title={siteTitle}>
+      {/* <Img className="h-screen w-full" fluid={post.frontmatter.featuredImage.childImageSharp.fluid} /> */}
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <article>
+      <article className="container-small mx-auto max-w-lg">
+      
         <header className="text-center">
           <h1 className="m-6 text-4xl">
             {post.frontmatter.title}
@@ -25,7 +28,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             {post.frontmatter.date}
           </p>
         </header>
-        <section dangerouslySetInnerHTML={{ __html: post.html }} />
+        <section className="content" dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr />
         <footer>
           <Bio />
@@ -79,6 +82,13 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        featuredImage {
+          childImageSharp {
+            fluid(maxWidth: 1024) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }

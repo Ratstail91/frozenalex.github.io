@@ -1,14 +1,11 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../layouts/layout.jsx"
 import SEO from "../components/seo"
-import { FaGithub } from "react-icons/fa"
 
 const SiteIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
-  const posts = data.allMarkdownRemark.edges
-
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="Alex Blog" />
