@@ -13,7 +13,7 @@ class Header extends React.Component {
 
   render(props) {
     return (
-      <header className="header">
+      <header className="header bg-teal-100 text-black">
         <nav className="navbar container mx-auto px-4">
           {/* Logo */}
           <Link to="/">
@@ -62,6 +62,13 @@ class Header extends React.Component {
               <Link
                 className="block mt-4 lg:inline-block md:mt-0 text-teal-200 hover:text-white mr-4"
                 activeClassName="active"
+                to="/contact/"
+              >
+                Contact
+              </Link>
+              <Link
+                className="block mt-4 lg:inline-block md:mt-0 text-teal-200 hover:text-white mr-4"
+                activeClassName="active"
                 to="/about/"
               >
                 About
@@ -83,21 +90,21 @@ class Header extends React.Component {
             </div>
             <div class="text-md lg:flex-shrink flex justify-center md:justify-start">
               <a
-                className="block mt-4 lg:inline-block md:mt-0 text-teal-200 hover:text-white mr-4"
+                className="transition-colors duration-300 block mt-4 lg:inline-block md:mt-0 text-teal-200 hover:text-blue-500 mr-4"
                 href="https://twitter.com/FrosteeAlex"
                 target="__blank"
               >
                 <FaTwitter size={24} />
               </a>
               <a
-                className="block mt-4 lg:inline-block md:mt-0 text-teal-200 hover:text-white mr-4"
+                className="transition-colors duration-300 block mt-4 lg:inline-block md:mt-0 text-teal-200 hover:text-orange-500 mr-4"
                 href="https://gitlab.com/FrozenAlex"
                 target="__blank"
               >
                 <FaGitlab size={24} />
               </a>
               <a
-                className="block mt-4 lg:inline-block md:mt-0 text-teal-200 hover:text-white mr-4"
+                className="transition-colors duration-300 block mt-4 lg:inline-block md:mt-0 text-teal-200 hover:text-black mr-4"
                 href="https://github.com/FrozenAlex"
                 target="__blank"
               >

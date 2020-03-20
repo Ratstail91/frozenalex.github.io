@@ -12,7 +12,7 @@ const purgecss = require("@fullhuman/postcss-purgecss")({
 
 module.exports = {
   siteMetadata: {
-    title: `Alex Blog`,
+    title: `FrozenAlex`,
     author: {
       name: `FrozenAlex`,
       summary: `who likes to build stuff`,
