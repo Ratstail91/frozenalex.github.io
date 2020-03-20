@@ -1,18 +1,14 @@
 // postcss.config.js
-const purgecss = require('@fullhuman/postcss-purgecss')({
-
-  // Specify the paths to all of the template files in your project 
+const purgecss = require("@fullhuman/postcss-purgecss")({
+  // Specify the paths to all of the template files in your project
   content: [
-    './src/**/*.jsx',
-    './src/**/*.vue',
-    './src/**/*.jsx',
-    // etc.
+    "./src/**/*.jsx",
+    "./src/**/*.vue"
   ],
 
   // Include any special characters you're using in this regular expression
-  defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
+  defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
 })
-
 
 module.exports = {
   siteMetadata: {
@@ -25,9 +21,12 @@ module.exports = {
     siteUrl: `https://frozenalex.github.io/`,
     social: {
       twitter: `FrosteeAlex`,
+      github: `FrozenAlex`,
+      gitlab: `FrozenAlex`
     },
   },
-  plugins: [{
+  plugins: [
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/blog`,
@@ -44,11 +43,12 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        plugins: [{
+        plugins: [
+          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 1024,
-              quality: 90
+              quality: 90,
             },
           },
           {
@@ -90,23 +90,25 @@ module.exports = {
       options: {
         postCssPlugins: [
           require("tailwindcss"),
-          require('postcss-import')(), // Add support for sass-like '@import'
-          require('postcss-extend')(), // Add support for sass-like '@extend'
-          require('postcss-nesting')(), // Add support for sass-like nesting of rules
+          require("postcss-import")(), // Add support for sass-like '@import'
+          require("postcss-extend")(), // Add support for sass-like '@extend'
+          require("postcss-nesting")(), // Add support for sass-like nesting of rules
           // Preset env
           // require('cssnano')() // Minify CSS
-          ...process.env.NODE_ENV === 'production' ? [ // If not dev then build with these
-            purgecss,
-            require(`postcss-preset-env`)({
-              stage: 0
-            }),
-          ] : []
+          ...(process.env.NODE_ENV === "production"
+            ? [
+                // If not dev then build with these
+                purgecss,
+                require(`postcss-preset-env`)({
+                  stage: 0,
+                }),
+              ]
+            : []),
         ],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
-
   ],
 }
