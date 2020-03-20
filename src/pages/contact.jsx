@@ -12,7 +12,6 @@ class ContactPage extends React.Component {
         name: "",
         message: "",
       },
-      valid: false,
     }
   }
   render() {
@@ -48,6 +47,7 @@ class ContactPage extends React.Component {
               placeholder="Name/Email"
               name="name"
               maxLength="200"
+              required
             />
           </div>
           {/* Message */}
@@ -67,6 +67,7 @@ class ContactPage extends React.Component {
               name="message"
               rows="5"
               maxLength="3896"
+              required
             />
           </div>
           {/* Filename */}
@@ -90,7 +91,6 @@ class ContactPage extends React.Component {
               className="bg-teal-500 text-white font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider disabled:opacity-75 "
               type="submit"
               value="Submit"
-              disabled={!this.state.valid}
             />
           </div>
         </form>
@@ -99,13 +99,16 @@ class ContactPage extends React.Component {
   }
   handleChange(e) {
     this.setState({ form: { ...this.state.form, [e.target.id]: e.target.value } })
-    this.setState({
-      valid: (this.state.form.message != "") & (this.state.form.name != ""),
-    })
+  }
+  validate() {
+    return (this.state.form.message != "") & (this.state.form.name != "")
   }
   async handleSubmit(e) {
     e.preventDefault()
-
+    if (!this.validate()) {
+      alert("Invalid input. Check your name and message!")
+      return
+    }
     let data = new FormData()
     data.append("name", this.state.form.name)
     data.append("message", this.state.form.message)
