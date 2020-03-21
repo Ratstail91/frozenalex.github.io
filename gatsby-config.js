@@ -1,10 +1,7 @@
 // postcss.config.js
 const purgecss = require("@fullhuman/postcss-purgecss")({
   // Specify the paths to all of the template files in your project
-  content: [
-    "./src/**/*.jsx",
-    "./src/**/*.vue"
-  ],
+  content: ["./src/**/*.jsx", "./src/**/*.vue", "./src/**/*.tsx"],
 
   // Include any special characters you're using in this regular expression
   defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
@@ -22,7 +19,7 @@ module.exports = {
     social: {
       twitter: `FrosteeAlex`,
       github: `FrozenAlex`,
-      gitlab: `FrozenAlex`
+      gitlab: `FrozenAlex`,
     },
   },
   plugins: [
@@ -68,7 +65,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: `UA-54839307-2`,
       },
     },
     `gatsby-plugin-feed`,
@@ -110,5 +107,6 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    `gatsby-plugin-typescript`,
   ],
 }
