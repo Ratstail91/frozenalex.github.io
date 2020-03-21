@@ -1,10 +1,17 @@
-import React from "react"
+import * as React from "react"
 import { graphql } from "gatsby"
 
-import Layout from "../layouts/layout.jsx"
+import Layout from "../layouts/layout"
 import SEO from "../components/seo"
 
-class ContactPage extends React.Component {
+interface ContactPageState {
+  form: {
+    name: string
+    message: string
+  }
+}
+
+class ContactPage extends React.Component<any, ContactPageState> {
   constructor(props) {
     super(props)
     this.state = {
@@ -27,66 +34,66 @@ class ContactPage extends React.Component {
           action="https://frozen-feedback.herokuapp.com"
           method="POST"
           className="max-w-md mx-auto"
-          enctype="multipart/form-data"
+          encType="multipart/form-data"
           onSubmit={this.handleSubmit.bind(this)}
         >
           {/* Name */}
-          <div class="mb-4">
+          <div className="mb-4">
             <label
-              class="block text-gray-700 text-md text-center font-bold mb-2"
-              for="name"
+              className="block text-gray-700 text-md text-center font-bold mb-2"
+              htmlFor="name"
             >
               Name and Email
             </label>
             <input
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="name"
               value={this.state.form.name}
               onChange={this.handleChange.bind(this)}
               type="text"
               placeholder="Name/Email"
               name="name"
-              maxLength="200"
+              maxLength={200}
               required
             />
           </div>
           {/* Message */}
-          <div class="mb-4">
+          <div className="mb-4">
             <label
-              class="block text-gray-700  text-md text-center font-bold mb-2"
-              for="message"
+              className="block text-gray-700  text-md text-center font-bold mb-2"
+              htmlFor="message"
             >
               Message
             </label>
             <textarea
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline resize-y"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline resize-y"
               id="message"
               placeholder="Message"
               onChange={this.handleChange.bind(this)}
               value={this.state.form.message}
               name="message"
-              rows="5"
-              maxLength="3896"
+              rows={5}
+              maxLength={3896}
               required
             />
           </div>
           {/* Filename */}
-          <div class="mb-4">
+          <div className="mb-4">
             <label
-              class="block text-gray-700 text-md text-center font-bold mb-2"
-              for="file"
+              className="block text-gray-700 text-md text-center font-bold mb-2"
+              htmlFor="file"
             >
               File
             </label>
             <input
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="file"
               type="file"
               placeholder="File"
               name="file"
             />
           </div>
-          <div class="mb-4 text-center">
+          <div className="mb-4 text-center">
             <input
               className="bg-teal-500 text-white font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider disabled:opacity-75 "
               type="submit"
@@ -97,13 +104,13 @@ class ContactPage extends React.Component {
       </Layout>
     )
   }
-  handleChange(e) {
+  handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     this.setState({ form: { ...this.state.form, [e.target.id]: e.target.value } })
   }
   validate() {
-    return (this.state.form.message != "") & (this.state.form.name != "")
+    return this.state.form.message != "" && this.state.form.name != ""
   }
-  async handleSubmit(e) {
+  async handleSubmit(e: HTMLFormElement) {
     e.preventDefault()
     if (!this.validate()) {
       alert("Invalid input. Check your name and message!")
@@ -112,9 +119,10 @@ class ContactPage extends React.Component {
     let data = new FormData()
     data.append("name", this.state.form.name)
     data.append("message", this.state.form.message)
-    let file = document.getElementById("file").files[0]
+    let fileInput = document.getElementById("file") as HTMLInputElement
+    let file = fileInput.files[0]
     if (file) {
-      data.append("file", document.getElementById("file").files[0])
+      data.append("file", file)
     }
 
     try {

@@ -1,7 +1,7 @@
-import React from "react"
+import * as React from "react"
 import { Link, graphql } from "gatsby"
 
-import Layout from "../layouts/layout.jsx"
+import Layout from "../layouts/layout"
 import SEO from "../components/seo"
 import Img from "gatsby-image"
 
@@ -19,18 +19,18 @@ const BlogIndex = ({ data, location }) => {
           {posts.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug
             return (
-              <Link to={node.fields.slug}>
-                <article key={node.fields.slug} class="rounded overflow-hidden shadow-lg">
+              <Link key={node.fields.slug} to={node.fields.slug}>
+                <article className="rounded overflow-hidden shadow-lg">
                   <Img
                     className="h-64 w-full object-cover"
                     fluid={node.frontmatter.featuredImage.childImageSharp.fluid}
                   />
-                  <div class="px-6 py-4">
+                  <div className="px-6 py-4">
                     <header>
                       <h3 className="font-bold text-xl mb-2">
-                        <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                          {title}
-                        </Link>
+                        {/* <Link style={{ boxShadow: `none` }} to={node.fields.slug}> */}
+                        {title}
+                        {/* </Link> */}
                       </h3>
                       <small className="text-gray-700 text-base text-sm">
                         {node.frontmatter.date}

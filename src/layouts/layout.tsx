@@ -1,8 +1,18 @@
-import React from "react"
+import * as React from "react"
 
 import Header from "../components/header"
 
-const Layout = ({ shrink, location, title, children }) => {
+const Layout = ({
+  shrink,
+  location,
+  title,
+  children,
+}: {
+  shrink?: boolean
+  location: string
+  title: string
+  children?: React.ReactNode
+}) => {
   return (
     <div className="app">
       <Header></Header>
