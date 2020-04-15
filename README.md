@@ -1,1 +1,1 @@
-# Simple Gatsby blog
+# Alex blog and personal website
