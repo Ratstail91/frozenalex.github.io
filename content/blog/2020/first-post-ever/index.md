@@ -13,4 +13,4 @@ I am a web developer with a need to write down important information. I'm too af
 
 If my article helped you or not you may let me know on Twitter, I like to see the results of taking time to write these articles and it will motivate me to write even more. And if you've got any problems, I'd be happy to help.
 
-![alt text](peppercarrot-wallpaper_by-David-Revoy.jpg "Read tThe Flying Manual")
+![alt text](peppercarrot-wallpaper_by-David-Revoy.jpg "Read The Flying Manual")
